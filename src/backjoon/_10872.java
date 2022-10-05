@@ -9,10 +9,10 @@ public class _10872 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int pact = 1;
+        int fact = 1;
         for(int i=1; i<=n; i++){
-        pact *= i;
+        fact *= i;
         }
-        System.out.println(pact);
+        System.out.println(fact);
     }
 }
