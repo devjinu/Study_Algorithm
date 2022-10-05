@@ -14,8 +14,5 @@ public class _10872 {
         pact *= i;
         }
         System.out.println(pact);
-
-
-
     }
 }
