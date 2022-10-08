@@ -1,5 +1,7 @@
 package backjoon;
 
+import java.util.Scanner;
+
 //시작 -> 실행 -> cmd를 쳐보자. 검정 화면이 눈에 보인다. 여기서 dir이라고 치면 그 디렉토리에 있는 서브디렉토리와 파일이 모두 나온다. 이때 원하는 파일을 찾으려면 다음과 같이 하면 된다.
 //dir *.exe라고 치면 확장자가 exe인 파일이 다 나온다. "dir 패턴"과 같이 치면 그 패턴에 맞는 파일만 검색 결과로 나온다.
 // 예를 들어, dir a?b.exe라고 검색하면 파일명의 첫 번째 글자가 a이고, 세 번째 글자가 b이고, 확장자가 exe인 것이 모두 나온다. 이때 두 번째 문자는 아무거나 나와도 된다. 예를 들어, acb.exe, aab.exe, apb.exe가 나온다.
@@ -9,5 +11,32 @@ package backjoon;
 // 파일이름은 알파벳 소문자와 '.' 로만 이루어져 있다.
 //첫째 줄에 패턴을 출력하면 된다.
 public class _1032 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
+        int N = sc.nextInt();
+
+        String[] arr = new String[N];
+        for (int i = 0; i < N; i++) {
+            arr[i] = sc.next();
+        }
+        StringBuilder sb = new StringBuilder();
+        boolean isSame = true;
+        for (int i = 0; i < arr[0].length(); i++) {
+            char c = arr[0].charAt(i);
+            isSame = true;
+            for (int j = 1; j < N; j++) {
+                if (c != arr[j].charAt(i)) {
+                    isSame = false;
+                    break;
+                }
+            }
+            if (isSame == true) {
+                sb.append(c);
+            } else {
+                sb.append("?");
+            }
+        }
+        System.out.println(sb.toString());
+    }
 }
