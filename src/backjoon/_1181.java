@@ -1,7 +1,6 @@
 package backjoon;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Scanner;
 
 //알파벳 소문자로 이루어진 N개의 단어가 들어오면 아래와 같은 조건에 따라 정렬하는 프로그램을 작성하시오.
@@ -14,7 +13,7 @@ public class _1181 {
         Scanner sc = new Scanner(System.in);
 
         int N = sc.nextInt();
-        String arr[]  = new String[N];
+        String[] arr = new String[N];
         sc.nextLine();
 
         for (int i = 0; i < N; i++) {
@@ -22,14 +21,11 @@ public class _1181 {
         }
 
         // 1.길이순으로, 2.사전순으로
-        Arrays.sort(arr,new Comparator<String>() {
-            @Override
-            public int compare(String s1, String s2) {
-                if(s1.length() == s2.length()) {
-                    return s1.compareTo(s2);
-                } else {
-                    return s1.length() - s2.length();
-                }
+        Arrays.sort(arr, (s1, s2) -> {
+            if(s1.length() == s2.length()) {
+                return s1.compareTo(s2);
+            } else {
+                return s1.length() - s2.length();
             }
         });
 
