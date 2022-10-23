@@ -24,13 +24,7 @@ public class _10814 {
             arr[i][1] = sc.next();
 
         }
-        Arrays.sort(arr, new Comparator<String[]>() {
-            @Override
-            public int compare(String[] s1, String[] s2) {
-                return Integer.parseInt(s1[0]) - Integer.parseInt(s2[0]);
-            }
-
-        });
+        Arrays.sort(arr, Comparator.comparingInt(s -> Integer.parseInt(s[0])));
 
         for (int i = 0; i < N; i++) {
             System.out.println(arr[i][0] + " " + arr[i][1]);
