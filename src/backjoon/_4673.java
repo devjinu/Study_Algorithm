@@ -11,6 +11,27 @@ package backjoon;
 //10,000보다 작거나 같은 셀프 넘버를 한 줄에 하나씩 증가하는 순서로 출력한다.
 public class _4673 {
     public static void main(String[] args) {
+        boolean[] isNotSelfNumber = new boolean[10001];
 
+        for (int i = 1; i <= 10000; ++i) {
+            int dn = getdn(i);
+            if (dn <= 10000) {
+                isNotSelfNumber[dn] = true;
+            }
+        }
+
+        for (int i = 1; i < isNotSelfNumber.length; ++i) {
+            if (!isNotSelfNumber[i]) {
+                System.out.println(i);
+            }
+        }
+    }
+    private static int getdn(int n) {
+        int dn = n;
+        while(n > 0) {
+            dn += n % 10;
+            n /= 10;
+        }
+        return dn;
     }
 }
