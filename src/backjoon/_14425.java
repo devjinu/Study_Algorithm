@@ -12,7 +12,7 @@ import java.util.Scanner;
 //첫째 줄에 M개의 문자열 중에 총 몇 개가 집합 S에 포함되어 있는지 출력한다.
 
 public class _14425 {
-    static HashMap<String, Integer> map;
+    static HashMap map = new HashMap();
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -20,10 +20,7 @@ public class _14425 {
         int M = sc.nextInt();
         int num = 0;
 
-        map = new HashMap();
-        for (int i = 0; i < N; i++) {
-            map.put(sc.next(), 1);
-        }
+        for (int i = 0; i < N; i++) map.put(sc.next(), 1);
 
         for (int i = 0; i < M; i++) {
             String str = sc.next();
