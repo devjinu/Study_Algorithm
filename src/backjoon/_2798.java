@@ -15,7 +15,7 @@ public class _2798 {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
         int M = sc.nextInt();
-        int sum = 0;
+        int sum;
         int temp = 0;
 
         int[] arr = new int[N];
