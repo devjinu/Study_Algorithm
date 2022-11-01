@@ -23,7 +23,7 @@ public class _1929 {
         }
 
         for(int i=M; i<N+1; i++){
-            if(arr[i] == false){
+            if(!arr[i]){
                 System.out.println(i);
             }
         }
