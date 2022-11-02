@@ -1,7 +1,7 @@
 package backjoon._10000;
 
+import java.io.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 // 정수를 저장하는 스택을 구현한 다음, 입력으로 주어지는 명령을 처리하는 프로그램을 작성하시오.
 //명령은 총 다섯 가지이다.
@@ -14,42 +14,55 @@ import java.util.Scanner;
 // 문제에 나와있지 않은 명령이 주어지는 경우는 없다.
 //출력해야하는 명령이 주어질 때마다, 한 줄에 하나씩 출력한다.
 public class _10828 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        ArrayList<Integer> arr = new ArrayList<>();
-        String str = sc.next();
-        for (int i = 0; i < N; i++) {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        ArrayList<Integer> queue = new ArrayList<>();
+        int N = Integer.parseInt(bf.readLine());
+        for(int i=0; i<N; i++){
+            String[] command = bf.readLine().split(" ");
+            if ("push".equals(command[0])) {
+                queue.add(Integer.parseInt(command[1]));
+            }
+            if ("top".equals(command[0])){
+                if(queue.size()==0){
+                    bw.write("-1");
+                }else {
+                    bw.write(Integer.toString(queue.get(queue.size() - 1)));
+                }
+                bw.newLine();
+                bw.flush();
+            }
+            if ("size".equals(command[0])){
+                bw.write(Integer.toString(queue.size()));
+                bw.newLine();
+                bw.flush();
+            }
+            if ("empty".equals(command[0])){
+                if(queue.size()==0){
+                    bw.write("1");
+                }
+                else{
+                    bw.write("0");
 
-            if ("push".equals(str)) {
-                arr.add(sc.nextInt());
-            }
-            if ("pop".equals(str)) {
-                if (arr.size() == 0) {
-                    System.out.println(-1);
-                } else {
-                    int j = arr.get(arr.size() - 1);
-                    arr.remove(arr.size() - 1);
-                    System.out.println(j);
                 }
+                bw.newLine();
+                bw.flush();
             }
-            if ("size".equals(str)) {
-                System.out.println(arr.size());
-            }
-            if ("empty".equals(str)) {
-                if (arr.size() == 0) {
-                    System.out.println(1);
-                } else {
-                    System.out.println(0);
+            if("pop".equals(command[0])){
+                if(queue.size()==0){
+                    bw.write("-1");
+
                 }
-            }
-            if ("top".equals(str)) {
-                if (arr.size() == 0) {
-                    System.out.println(-1);
-                } else {
-                    System.out.println(arr.get(arr.size() - 1));
+                else {
+                    int A = queue.get(queue.size()-1);
+                    queue.remove(queue.size()-1);
+                    bw.write(Integer.toString(A));
                 }
+                bw.newLine();
+                bw.flush();
             }
         }
+        bw.close();
     }
 }
