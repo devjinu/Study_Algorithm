@@ -1,5 +1,7 @@
 package backjoon._1000;
 
+import java.util.Scanner;
+
 //666은 종말을 나타내는 숫자라고 한다. 따라서, 많은 블록버스터 영화에서는 666이 들어간 제목을 많이 사용한다. 영화감독 숌은 세상의 종말 이라는 시리즈 영화의 감독이다.
 //조지 루카스는 스타워즈를 만들 때, 스타워즈 1, 스타워즈 2, 스타워즈 3, 스타워즈 4, 스타워즈 5, 스타워즈 6과 같이 이름을 지었고,
 //피터 잭슨은 반지의 제왕을 만들 때, 반지의 제왕 1, 반지의 제왕 2, 반지의 제왕 3과 같이 영화 제목을 지었다.
@@ -11,6 +13,18 @@ package backjoon._1000;
 //첫째 줄에 N번째 영화의 제목에 들어간 수를 출력한다.
 public class _1436 {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int num = 666;
+        int count =1;
 
+        while (count != N){
+            num ++;
+          //  System.out.println("num : "+num+", count : "+count);
+            if(String.valueOf(num).contains("666")){
+                count++;
+            }
+        }
+        System.out.println(num);
     }
 }
