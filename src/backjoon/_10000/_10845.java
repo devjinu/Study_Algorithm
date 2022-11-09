@@ -1,7 +1,11 @@
 package backjoon._10000;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.LinkedList;
-import java.util.Scanner;
+import java.util.Queue;
+import java.util.StringTokenizer;
 
 //정수를 저장하는 큐를 구현한 다음, 입력으로 주어지는 명령을 처리하는 프로그램을 작성하시오.
 //명령은 총 여섯 가지이다.
@@ -15,50 +19,44 @@ import java.util.Scanner;
 // 문제에 나와있지 않은 명령이 주어지는 경우는 없다.
 //출력해야하는 명령이 주어질 때마다, 한 줄에 하나씩 출력한다.
 public class _10845 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        LinkedList<Integer> queue = new LinkedList<>();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+        StringBuilder sb = new StringBuilder();
+        Queue<Integer> queue = new LinkedList<Integer>();
+        int last = 0;
+
         for (int i = 0; i < N; i++) {
-            String str = sc.next();
-            switch (str) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            String Str = st.nextToken();
+
+            switch (Str) {
                 case "push":
-                    int X = sc.nextInt();
-                    queue.add(X);
+                    last = Integer.parseInt(st.nextToken());
+                    queue.offer(last);
                     break;
                 case "pop":
-                    if (queue.isEmpty()) {
-                        System.out.println(-1);
-                    } else {
-                        System.out.println(queue.removeFirst());
-                    }
-                    break;
-                case "empty":
-                    if (queue.isEmpty()) {
-                        System.out.println(1);
-                    } else {
-                        System.out.println(0);
-                    }
-                    break;
-                case "front":
-                    if (queue.isEmpty()) {
-                        System.out.println(-1);
-                    } else {
-                        System.out.println(queue.getFirst());
-                    }
-                    break;
-                case "back":
-                    if (queue.isEmpty()) {
-                        System.out.println(-1);
-                    } else {
-                        System.out.println(queue.getLast());
-                    }
+                    if (queue.isEmpty()) sb.append(-1).append("\n");
+                    else sb.append(queue.poll()).append("\n");
                     break;
                 case "size":
-                    System.out.println(queue.size());
+                    sb.append(queue.size()).append("\n");
+                    break;
+                case "empty":
+                    if (queue.isEmpty()) sb.append(1).append("\n");
+                    else sb.append(0).append("\n");
+                    break;
+                case "front":
+                    if (queue.isEmpty()) sb.append(-1).append("\n");
+                    else sb.append(queue.peek()).append("\n");
+                    break;
+                case "back":
+                    if (queue.isEmpty()) sb.append(-1).append("\n");
+                    else sb.append(last).append("\n");
                     break;
             }
-
         }
+        System.out.println(sb);
     }
+
 }
