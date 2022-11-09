@@ -1,4 +1,8 @@
 package backjoon._10000;
+
+import java.util.LinkedList;
+import java.util.Scanner;
+
 //정수를 저장하는 큐를 구현한 다음, 입력으로 주어지는 명령을 처리하는 프로그램을 작성하시오.
 //명령은 총 여섯 가지이다.
 //push X: 정수 X를 큐에 넣는 연산이다.
@@ -12,6 +16,49 @@ package backjoon._10000;
 //출력해야하는 명령이 주어질 때마다, 한 줄에 하나씩 출력한다.
 public class _10845 {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        LinkedList<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < N; i++) {
+            String str = sc.next();
+            switch (str) {
+                case "push":
+                    int X = sc.nextInt();
+                    queue.add(X);
+                    break;
+                case "pop":
+                    if (queue.isEmpty()) {
+                        System.out.println(-1);
+                    } else {
+                        System.out.println(queue.removeFirst());
+                    }
+                    break;
+                case "empty":
+                    if (queue.isEmpty()) {
+                        System.out.println(1);
+                    } else {
+                        System.out.println(0);
+                    }
+                    break;
+                case "front":
+                    if (queue.isEmpty()) {
+                        System.out.println(-1);
+                    } else {
+                        System.out.println(queue.getFirst());
+                    }
+                    break;
+                case "back":
+                    if (queue.isEmpty()) {
+                        System.out.println(-1);
+                    } else {
+                        System.out.println(queue.getLast());
+                    }
+                    break;
+                case "size":
+                    System.out.println(queue.size());
+                    break;
+            }
 
+        }
     }
 }
