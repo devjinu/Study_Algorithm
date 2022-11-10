@@ -1,5 +1,10 @@
 package backjoon._10000;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayDeque;
+
 //정수를 저장하는 덱(Deque)를 구현한 다음, 입력으로 주어지는 명령을 처리하는 프로그램을 작성하시오.
 //명령은 총 여덟 가지이다.
 //push_front X: 정수 X를 덱의 앞에 넣는다.
@@ -14,7 +19,72 @@ package backjoon._10000;
 // 문제에 나와있지 않은 명령이 주어지는 경우는 없다.
 //출력해야하는 명령이 주어질 때마다, 한 줄에 하나씩 출력한다.
 public class _10866 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+        ArrayDeque<Integer> dq = new ArrayDeque<Integer>();
+        StringBuilder sb = new StringBuilder();
+
+        int N = Integer.parseInt(br.readLine());
+
+        for (int i = 0; i < N; i++) {
+            String[] s = br.readLine().split(" ");
+            switch (s[0]) {
+                case "push_front": {
+                    dq.addFirst(Integer.parseInt(s[1]));
+                    break;
+                }
+                case "push_back": {
+                    dq.addLast(Integer.parseInt(s[1]));
+                    break;
+                }
+                case "pop_front": {
+                    if (dq.isEmpty()) {
+                        sb.append(-1).append('\n');
+                    } else {
+                        sb.append(dq.pollFirst()).append('\n');
+                    }
+                    break;
+                }
+                case "pop_back": {
+                    if (dq.isEmpty()) {
+                        sb.append(-1).append('\n');
+                    } else {
+                        sb.append(dq.pollLast()).append('\n');
+                    }
+                    break;
+                }
+                case "size": {
+                    sb.append(dq.size()).append('\n');
+                    break;
+                }
+                case "empty": {
+                    if (dq.isEmpty()) {
+                        sb.append(1).append('\n');
+                    } else {
+                        sb.append(0).append('\n');
+                    }
+                    break;
+                }
+                case "front": {
+                    if (dq.isEmpty()) {
+                        sb.append(-1).append('\n');
+                    } else {
+                        sb.append(dq.peekFirst()).append('\n');
+                    }
+                    break;
+                }
+                case "back": {
+                    if (dq.isEmpty()) {
+                        sb.append(-1).append('\n');
+                    } else {
+                        sb.append(dq.peekLast()).append('\n');
+                    }
+                    break;
+                }
+            }
+        }
+        System.out.println(sb);
     }
 }
+
