@@ -10,5 +10,19 @@ import java.util.Scanner;
 //각 테스트 케이스에 대해 마지막 데이터가 처리되는 컴퓨터의 번호를 출력한다.
 public class _1009 {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        for (int i = 0; i < T; i++) {
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            int r = 1;
+            for(int j=0; j<b; j++){
+                r = r*a %10;
+                if(r ==0){
+                    r =10;
+                }
+            }
+            System.out.println(r);
+        }
     }
 }
