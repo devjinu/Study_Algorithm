@@ -17,7 +17,6 @@ public class _16204 {
         int K = sc.nextInt();
 
         int count = Math.min(M, K) + Math.min(N - M, N - K);
-
         System.out.println(count);
     }
 }
