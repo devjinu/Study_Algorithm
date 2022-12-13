@@ -1,5 +1,7 @@
 package backjoon._10000;
 
+import java.util.Scanner;
+
 //동수는 제과점에 과자를 사러 가는데 현재 가진 돈이 모자랄 경우 부모님께 모자란 돈을 받으려고 한다.
 // 과자 한 개의 가격이 K, 사려고 하는 과자의 개수가 N이고, 현재 가진 돈의 액수를 M이라 할 때 여러분은 동수가 부모님께 받아야 하는 모자란 돈을 계산하려고 한다.
 //예를 들어, 과자 한 개의 가격이 30원, 사려고 하는 과자의 개수가 4개, 현재 동수가 가진 돈이 100원이라 할 때, 동수가 부모님께 받아야 하는 돈은 20원이다.
@@ -11,6 +13,14 @@ package backjoon._10000;
 //첫 줄에 동수가 부모님께 받아야 하는 돈의 액수를 출력한다.
 public class _10156 {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int K = sc.nextInt();
+        int N = sc.nextInt();
+        int M = sc.nextInt();
 
+        if (K * N <= M)
+            System.out.println(0);
+        else
+            System.out.println((K * N) - M);
     }
 }
